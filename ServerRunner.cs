@@ -1,9 +1,10 @@
 ﻿namespace Kups.CarBrowser.CarBrowser
 {
-    internal class Program
+    public class ServerRunner
     {
         public static void Main(string[] args)
         {
+            var carBrowser = new CarBrowser();
         }
     }
 }

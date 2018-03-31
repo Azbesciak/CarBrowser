@@ -15,6 +15,6 @@ namespace Kups.CarBrowser.DAOMock
 
         public ICarsRepository GetCarsRepository() => _carsRepository;
 
-        public IDealersRepository GetSellersRepository() => _dealersRepository;
+        public IDealersRepository GetDealersRepository() => _dealersRepository;
     }
 }
