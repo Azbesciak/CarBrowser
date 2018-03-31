@@ -1,8 +1,8 @@
 ﻿using Kups.CarBrowser.Core;
 using Kups.CarBrowser.DAO;
-using Kups.CarBrowser.DAOMock;
+using Kups.CarBrowser.MockDAO;
 
-namespace Kups.CarBrowser.CarBrowser
+namespace Kups.CarBrowser.BL
 {
     public class CarBrowser
     {

@@ -1,6 +1,6 @@
 ﻿using Kups.CarBrowser.DAO;
 
-namespace Kups.CarBrowser.DAOMock
+namespace Kups.CarBrowser.MockDAO
 {
     public class MockDao: IDao
     {

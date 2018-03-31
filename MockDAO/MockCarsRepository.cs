@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
+using Kups.CarBrowser.BO;
 using Kups.CarBrowser.DAO;
-using Kups.CarBrowser.Interfaces;
 
-namespace Kups.CarBrowser.DAOMock
+namespace Kups.CarBrowser.MockDAO
 {
     public class MockCarsRepository : ICarsRepository
     {

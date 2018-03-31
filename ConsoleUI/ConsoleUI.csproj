@@ -4,8 +4,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F784EF17-79EA-4B8F-BF2B-8EF719A35F8B}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{75026D23-8663-4974-BB5F-7CA27ADC6C5B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Kups.CarBrowser.ConsoleUI</RootNamespace>
     <AssemblyName>Kups.CarBrowser.ConsoleUI</AssemblyName>
@@ -43,12 +43,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarBrowser.csproj">
-      <Project>{BEA1F63E-9CA7-4B0F-850A-0C519D28ED8B}</Project>
-      <Name>CarBrowser</Name>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{aae3fbc3-a0ad-4c8c-9896-eec99936d240}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BO\BO.csproj">
+      <Project>{0585bc79-03e4-4c3f-a1f0-3c5dc3d189cb}</Project>
+      <Name>BO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{817A21DC-AC48-45C8-800A-448679253E58}</Project>
+      <Project>{0275D577-FAAF-4AFF-A150-0311506B07CE}</Project>
       <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>

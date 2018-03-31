@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BEA1F63E-9CA7-4B0F-850A-0C519D28ED8B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{0585BC79-03E4-4C3F-A1F0-3C5DC3D189CB}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kups.CarBrowser.CarBrowser</RootNamespace>
-    <AssemblyName>Kups.CarBrowser.CarBrowser</AssemblyName>
+    <RootNamespace>Kups.CarBrowser.BO</RootNamespace>
+    <AssemblyName>Kups.CarBrowser.BO</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <LangVersion>7.2</LangVersion>
@@ -36,33 +36,17 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarBrowser.cs" />
-    <Compile Include="CarsService.cs" />
-    <Compile Include="DealersService.cs" />
-    <Compile Include="MarketService.cs" />
+    <Compile Include="Car.cs" />
+    <Compile Include="CarType.cs" />
+    <Compile Include="Dealer.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="EngineType.cs" />
+    <Compile Include="GearBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServerRunner.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Core\Core.csproj">
-      <Project>{817A21DC-AC48-45C8-800A-448679253E58}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="DAOMock\DAOMock.csproj">
-      <Project>{F2805143-4CF6-494D-B241-64A81C14AA33}</Project>
-      <Name>DAOMock</Name>
-    </ProjectReference>
-    <ProjectReference Include="DAO\DAO.csproj">
-      <Project>{CEC69A89-1FD0-4154-B105-FC129235D0F9}</Project>
-      <Name>DAO</Name>
-    </ProjectReference>
-    <ProjectReference Include="Interfaces\Interfaces.csproj">
-      <Project>{2C5E1E82-31DD-49A9-B09B-509A1F8F5C10}</Project>
-      <Name>Interfaces</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

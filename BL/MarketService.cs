@@ -1,6 +1,6 @@
 ﻿using Kups.CarBrowser.Core;
 
-namespace Kups.CarBrowser.CarBrowser
+namespace Kups.CarBrowser.BL
 {
     public class MarketService: IMarketService
     {

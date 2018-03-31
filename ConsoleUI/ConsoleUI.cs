@@ -5,7 +5,7 @@ using Kups.CarBrowser.Core;
 
 namespace Kups.CarBrowser.ConsoleUI
 {
-    public class ConsoleUi
+    public static class ConsoleUi
     {
         private const string LIST_CARS_COMMAND = "cars";
         private const string LIST_DEALERS_COMMAND = "dealers";
@@ -14,7 +14,7 @@ namespace Kups.CarBrowser.ConsoleUI
 
         public static void Main(string[] args)
         {
-            var carBrowser = new CarBrowser.CarBrowser();
+            var carBrowser = new BL.CarBrowser();
             PrintInstructions();
             while (true)
             {
@@ -46,11 +46,12 @@ namespace Kups.CarBrowser.ConsoleUI
         {
             if (args.Count > 1 && long.TryParse(args[1], out var id))
             {
-                Console.WriteLine(service.GetById(id));
+                var byId = service.GetById(id);
+                Console.WriteLine(byId != null ? byId.ToString() : "Not found");
             }
             else
             {
-                Console.WriteLine(service.GetAll());
+                service.GetAll().ForEach(c => Console.WriteLine(c));
             }
         }
 

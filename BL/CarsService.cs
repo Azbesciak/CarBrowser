@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
+using Kups.CarBrowser.BO;
 using Kups.CarBrowser.Core;
 using Kups.CarBrowser.DAO;
-using Kups.CarBrowser.Interfaces;
 
-namespace Kups.CarBrowser.CarBrowser
+namespace Kups.CarBrowser.BL
 {
     internal class CarsService: ICarsService
     {

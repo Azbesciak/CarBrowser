@@ -1,4 +1,4 @@
-﻿using Kups.CarBrowser.Interfaces;
+﻿using Kups.CarBrowser.BO;
 
 namespace Kups.CarBrowser.DAO
 {
