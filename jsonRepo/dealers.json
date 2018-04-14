@@ -1,0 +1,9 @@
+[
+  {
+    "Id": 1,
+    "Name": "Szpot",
+    "Brands": [
+      "Suzuki", "Opel", "Hyunday", "Kia", "Romet"
+    ]
+  }
+]
