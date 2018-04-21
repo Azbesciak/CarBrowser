@@ -34,19 +34,10 @@ namespace Kups.CarBrowser.BL.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("JsonDAO\\bin\\Debug\\Kups.CarBrowser.JsonDAO.dll")]
+        [global::System.Configuration.DefaultSettingValueAttribute("JsonDAO\\bin\\Debug\\merged.dll")]
         public string DaoDllLocation {
             get {
                 return ((string)(this["DaoDllLocation"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("JsonDAO\\bin\\Debug\\Newtonsoft.Json.dll")]
-        public string RequiredDlls {
-            get {
-                return ((string)(this["RequiredDlls"]));
             }
         }
     }

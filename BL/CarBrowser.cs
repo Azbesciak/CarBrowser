@@ -21,22 +21,12 @@ namespace Kups.CarBrowser.BL
 
         private static IDao CreateDao()
         {
-            GetRequiredDependencies();
             var daoType = Settings.Default.DaoClassName;
             var daoDll = Settings.Default.DaoDllLocation;
             var package = GetPackage(daoDll);
             var type = package.GetType(daoType);
 
             return (IDao) Activator.CreateInstance(type, new object[] { });
-        }
-
-        private static void GetRequiredDependencies()
-        {
-            var requiredDlls = Settings.Default.RequiredDlls.Split(',');
-            foreach (var dll in requiredDlls)
-            {
-                GetPackage(dll);
-            }
         }
 
         private static Assembly GetPackage(string daoDll)
