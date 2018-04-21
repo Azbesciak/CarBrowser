@@ -5,5 +5,12 @@
     "Brands": [
       "Suzuki", "Opel", "Hyunday", "Kia", "Romet"
     ]
+  },
+  {
+    "Id": 2,
+    "Name": "Mr. Zenek",
+    "Brands": [
+      "FSO"
+    ]
   }
 ]
