@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFUI"
         xmlns:viewmodels="clr-namespace:WPFUI.Models"
         xmlns:views="clr-namespace:WPFUI.Views"
         mc:Ignorable="d"
@@ -16,10 +15,10 @@
             <Setter Property="Foreground" Value="#FF2196F3"></Setter>
             <Setter Property="Width" Value="150"></Setter>
         </Style>
-        <DataTemplate x:Name="carsViewTemplate" DataType="{x:Type viewmodels:CarsViewModel}">
+        <DataTemplate DataType="{x:Type viewmodels:CarsViewModel}">
             <views:CarsView DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="dealersViewTemplate" DataType="{x:Type viewmodels:DealersViewModel}">
+        <DataTemplate DataType="{x:Type viewmodels:DealersViewModel}">
             <views:DealersView DataContext="{Binding}"/>
         </DataTemplate>
        
@@ -33,7 +32,7 @@
             </StackPanel>
         </Grid>
         <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0" DockPanel.Dock="Top"/>
-        <Grid x:Name="GridMain"  Background="DeepSkyBlue">
+        <Grid Background="DeepSkyBlue">
             <ContentControl Content="{Binding}"/>
         </Grid>
     </DockPanel>
