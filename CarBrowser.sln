@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonDAO", "JsonDAO\JsonDAO.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFUI", "WPFUI\WPFUI.csproj", "{FCE753B7-C900-455A-BF23-B7AB7EA7F494}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigUtils", "ConfigUtils\ConfigUtils.csproj", "{9E12319E-D27C-4523-9690-758025E72489}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{FCE753B7-C900-455A-BF23-B7AB7EA7F494}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCE753B7-C900-455A-BF23-B7AB7EA7F494}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCE753B7-C900-455A-BF23-B7AB7EA7F494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E12319E-D27C-4523-9690-758025E72489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E12319E-D27C-4523-9690-758025E72489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E12319E-D27C-4523-9690-758025E72489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E12319E-D27C-4523-9690-758025E72489}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

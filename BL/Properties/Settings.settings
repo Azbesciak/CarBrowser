@@ -1,12 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Kups.CarBrowser.BL.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="DaoClassName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Kups.CarBrowser.JsonDAO.JsonDao</Value>
-    </Setting>
-    <Setting Name="DaoDllLocation" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">JsonDAO\bin\Debug\merged.dll</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>

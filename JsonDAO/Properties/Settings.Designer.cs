@@ -22,32 +22,5 @@ namespace Kups.CarBrowser.JsonDAO.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\smieci\\PW\\CarBrowser\\jsonRepo")]
-        public string RepositoryPath {
-            get {
-                return ((string)(this["RepositoryPath"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("cars.json")]
-        public string CarsRepoFile {
-            get {
-                return ((string)(this["CarsRepoFile"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("dealers.json")]
-        public string DealersRepoFile {
-            get {
-                return ((string)(this["DealersRepoFile"]));
-            }
-        }
     }
 }

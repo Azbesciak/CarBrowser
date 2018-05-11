@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -54,6 +55,10 @@
     <ProjectReference Include="..\BO\BO.csproj">
       <Project>{0585BC79-03E4-4C3F-A1F0-3C5DC3D189CB}</Project>
       <Name>BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConfigUtils\ConfigUtils.csproj">
+      <Project>{9E12319E-D27C-4523-9690-758025E72489}</Project>
+      <Name>ConfigUtils</Name>
     </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{0275D577-FAAF-4AFF-A150-0311506B07CE}</Project>

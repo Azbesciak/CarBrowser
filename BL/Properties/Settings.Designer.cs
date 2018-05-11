@@ -22,23 +22,5 @@ namespace Kups.CarBrowser.BL.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Kups.CarBrowser.JsonDAO.JsonDao")]
-        public string DaoClassName {
-            get {
-                return ((string)(this["DaoClassName"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("JsonDAO\\bin\\Debug\\merged.dll")]
-        public string DaoDllLocation {
-            get {
-                return ((string)(this["DaoDllLocation"]));
-            }
-        }
     }
 }

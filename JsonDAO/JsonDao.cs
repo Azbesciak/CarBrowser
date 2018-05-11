@@ -1,7 +1,7 @@
 ﻿using System.IO;
+using ConfigUtils;
 using Kups.CarBrowser.BO;
 using Kups.CarBrowser.DAO;
-using Kups.CarBrowser.JsonDAO.Properties;
 
 namespace Kups.CarBrowser.JsonDAO
 {
@@ -12,9 +12,9 @@ namespace Kups.CarBrowser.JsonDAO
 
         public JsonDao()
         {
-            var repoPath = Settings.Default.RepositoryPath;
-            var carsFile = Settings.Default.CarsRepoFile;
-            var dealersFile = Settings.Default.DealersRepoFile;
+            var repoPath = Config.ReadSetting("RepositoryPath");
+            var carsFile = Config.ReadSetting("CarsRepoFile");
+            var dealersFile = Config.ReadSetting("DealersRepoFile");
 
             _carsRepository = new JsonCarsRepository(Reader<Car>(repoPath, carsFile));
             _dealersRepository = new JsonDealersRepository(Reader<Dealer>(repoPath, dealersFile));

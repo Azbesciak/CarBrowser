@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
-using Kups.CarBrowser.BL.Properties;
+using ConfigUtils;
 using Kups.CarBrowser.Core;
 using Kups.CarBrowser.DAO;
 
@@ -21,32 +22,18 @@ namespace Kups.CarBrowser.BL
 
         private static IDao CreateDao()
         {
-            var daoType = Settings.Default.DaoClassName;
-            var daoDll = Settings.Default.DaoDllLocation;
-            var package = GetPackage(daoDll);
-            var type = package.GetType(daoType);
-
-            return (IDao) Activator.CreateInstance(type, new object[] { });
-        }
-
-        private static Assembly GetPackage(string daoDll)
-        {
-            if (!daoDll.Contains(":"))
+            var daoDll = Config.ReadSetting("DaoDllLocation");
+            var package = Config.GetPackage(daoDll);
+            var allImplementations = package.DefinedTypes
+                .Where(t => t.GetInterfaces().Contains(typeof(IDao)))
+                .ToArray();
+            switch (allImplementations.Length)
             {
-                var root = Directory.GetParent(@"../../../").FullName;
-                daoDll = Path.Combine(root, daoDll);
-            }
+                case 1: return (IDao)Activator.CreateInstance(allImplementations[0], new object[] { });
+                case 0: throw new NullReferenceException($"Implementation of IDao was not found in {daoDll}");
 
-            try
-            {
-                var package = Assembly.LoadFile(daoDll);
-                AppDomain.CurrentDomain.Load(package.GetName());
-                return package;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Some dependency is not correct; check in settings: {0}", e.Message);
-                throw;
+                default:
+                    throw new ArgumentException($"found {allImplementations.Length} implementations of IDao");
             }
         }
     }

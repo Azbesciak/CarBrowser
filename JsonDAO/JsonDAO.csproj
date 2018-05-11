@@ -58,6 +58,10 @@
       <Project>{0585BC79-03E4-4C3F-A1F0-3C5DC3D189CB}</Project>
       <Name>BO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ConfigUtils\ConfigUtils.csproj">
+      <Project>{9E12319E-D27C-4523-9690-758025E72489}</Project>
+      <Name>ConfigUtils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAO\DAO.csproj">
       <Project>{9247345A-7261-48FB-9388-7875ED91B1F5}</Project>
       <Name>DAO</Name>
@@ -72,7 +76,7 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-   <!-- Code to merge the assemblies into one:setup.exe -->
+  <!-- Code to merge the assemblies into one:setup.exe -->
   <UsingTask TaskName="ILMerge.MSBuild.Tasks.ILMerge" AssemblyFile="$(SolutionDir)\packages\ILMerge.MSBuild.Tasks.1.0.0.3\tools\ILMerge.MSBuild.Tasks.dll" />
   <Target Name="AfterBuild">
     <ItemGroup>
@@ -85,7 +89,6 @@
     <Message Text="ILMerge @(MergeAsm) -&gt; $(MergedAssembly)" Importance="high" />
     <ILMerge InputAssemblies="@(MergeAsm)" OutputFile="$(MergedAssembly)" TargetKind="SameAsPrimaryAssembly" />
   </Target>
-
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">
