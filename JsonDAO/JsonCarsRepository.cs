@@ -4,17 +4,9 @@ using Kups.CarBrowser.DAO;
 
 namespace Kups.CarBrowser.JsonDAO
 {
-    public class JsonCarsRepository  : ICarsRepository
+    public class JsonCarsRepository : JsonRepository<Car>, ICarsRepository
     {
-        private readonly JsonReader<Car> _reader;
-
-        public JsonCarsRepository(JsonReader<Car> reader)
-        {
-            _reader = reader;
-        }
-
-        public List<Car> GetAll() => _reader.LoadJsonList();
-
-        public Car GetById(long id) => GetAll().Find(c => c.Id == id);
+        public JsonCarsRepository(JsonReader<Car> reader) : base(reader, c => c.Id)
+        {}
     }
 }

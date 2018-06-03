@@ -4,10 +4,10 @@ using Kups.CarBrowser.DAO;
 
 namespace Kups.CarBrowser.MockDAO
 {
-    public class MockDealersRepository: IDealersRepository
+    public class MockDealersRepository: MockRepo<Dealer>, IDealersRepository
     {
         private readonly List<Dealer> _dealers;
-        public MockDealersRepository()
+        public MockDealersRepository(): base(d => d.Id)
         {
             _dealers = new List<Dealer>(new[]
             {
@@ -19,8 +19,6 @@ namespace Kups.CarBrowser.MockDAO
             });
         }
 
-        public List<Dealer> GetAll() => _dealers;
-
-        public Dealer GetById(long id) => _dealers.Find(d => d.Id == id);
+        public override List<Dealer> GetAll() => _dealers;
     }
 }

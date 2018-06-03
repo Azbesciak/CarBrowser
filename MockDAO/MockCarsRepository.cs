@@ -5,13 +5,14 @@ using Kups.CarBrowser.DAO;
 
 namespace Kups.CarBrowser.MockDAO
 {
-    public class MockCarsRepository : ICarsRepository
+    public class MockCarsRepository : MockRepo<Car>, ICarsRepository
     {
         private readonly List<Car> _cars;
 
-        public MockCarsRepository()
+        public MockCarsRepository() : base(c => c.Id)
         {
-            _cars = new List<Car>(new[] {
+            _cars = new List<Car>(new[]
+            {
                 new Car(1, CarType.Combi, "R6", "Audi", 2016, GearBox.Automatic, Color.Chocolate,
                     new Engine(1, "TDI", EngineType.Diesel, 400)),
                 new Car(2, CarType.Coupe, "AMG C 63 S Coupe", "Mercedes-Benz", 2018, GearBox.Automatic, Color.Red,
@@ -27,8 +28,6 @@ namespace Kups.CarBrowser.MockDAO
             });
         }
 
-        public List<Car> GetAll() => _cars;
-
-        public Car GetById(long id) => _cars.Find(c => c.Id == id);
+        public override List<Car> GetAll() => _cars;
     }
 }

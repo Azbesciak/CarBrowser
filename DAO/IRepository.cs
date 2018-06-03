@@ -6,5 +6,8 @@ namespace Kups.CarBrowser.DAO
     {
         List<T> GetAll();
         T GetById(long id);
+        bool Add(T obj);
+        T Update(T obj);
+        bool Remove(long id);
     }
 }

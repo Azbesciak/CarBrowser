@@ -43,6 +43,7 @@
     <Compile Include="MockCarsRepository.cs" />
     <Compile Include="MockDao.cs" />
     <Compile Include="MockDealersRepository.cs" />
+    <Compile Include="MockRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
