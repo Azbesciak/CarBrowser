@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kups.CarBrowser.BO;
+using WPFUI.Models;
 
 namespace WPFUI.Wrappers
 {
@@ -30,7 +31,7 @@ namespace WPFUI.Wrappers
         public static List<T> GetListOfType<T>() => Enum.GetValues(typeof(T)).Cast<T>().ToList();
 
 
-        public EditableCar(Car car) : base(car != null)
+        public EditableCar(Car car, RelayCommand commitCmd) : base(car != null, commitCmd)
         {
             if (car == null) return;
             _carType = car.CarType;
@@ -46,7 +47,7 @@ namespace WPFUI.Wrappers
             _horsePower = car.Engine.HorsePower;
         }
 
-        [Range(1, int.MaxValue, ErrorMessage = "id cannot be negative")]
+        [Range(1, int.MaxValue, ErrorMessage = "Id must be positive")]
         public long Id
         {
             get => _id;
@@ -113,6 +114,7 @@ namespace WPFUI.Wrappers
             {
                 _gearBox = value;
                 OnPropertyChanged(nameof(GearBox));
+                Validate();
             }
         }
 

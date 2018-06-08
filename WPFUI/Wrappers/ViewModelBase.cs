@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.ComponentModel.DataAnnotations;
+using WPFUI.Models;
 using ValidationResult = System.ComponentModel.DataAnnotations.ValidationResult;
 
 namespace WPFUI.Wrappers
@@ -12,17 +13,21 @@ namespace WPFUI.Wrappers
     public abstract class ViewModelBase<T> : INotifyPropertyChanged, INotifyDataErrorInfo
     {
         public bool IsEditMode { get; }
+        public bool IsDirty { get; protected set; }
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            IsDirty = true;
         }
 
         protected Dictionary<string, List<string>> Errors = new Dictionary<string, List<string>>();
+        private readonly RelayCommand _commitCmd;
 
-        protected ViewModelBase(bool isEditMode)
+        protected ViewModelBase(bool isEditMode, RelayCommand commitCmd)
         {
             IsEditMode = isEditMode;
+            _commitCmd = commitCmd;
         }
 
         public IEnumerable GetErrors(string propertyName) =>
@@ -30,19 +35,6 @@ namespace WPFUI.Wrappers
 
         public bool HasErrors => Errors.Count > 0;
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
-
-        protected void RemoveErrors(string propertyName)
-        {
-            Errors.Remove(propertyName);
-        }
-
-        protected void AddError(string propertyName, string errorMsg)
-        {
-            var errors = Errors.ContainsKey(propertyName)
-                ? Errors[propertyName]
-                : (Errors[propertyName] = new List<string>());
-            errors.Add(errorMsg);
-        }
 
         protected void OnErrorChanged(string propertyName)
         {
@@ -76,6 +68,7 @@ namespace WPFUI.Wrappers
                 Errors.Add(prop.Key, messages);
                 OnErrorChanged(prop.Key);
             }
+            _commitCmd.UpdateCanExecuteState();
         }
 
         public abstract T CommitChanges();

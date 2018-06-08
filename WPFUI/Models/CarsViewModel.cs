@@ -8,7 +8,7 @@ namespace WPFUI.Models
     {
         public CarsViewModel(ICarsService service) : base(service)
         {}
-        protected override ViewModelBase<Car> CreateEditableModel(Car existing) => new EditableCar(existing);
+        protected override ViewModelBase<Car> CreateEditableModel(Car existing, RelayCommand commitCmd) => new EditableCar(existing, commitCmd);
         protected override long GetEntityId(Car entity) => entity.Id;
     }
 }
