@@ -4,16 +4,10 @@ using Kups.CarBrowser.Core;
 
 namespace WPFUI.Models
 {
-    public class DealersViewModel
+    public class DealersViewModel: ViewBase<Dealer>
     {
-
-        private readonly IDealersService _dealersService;
-        public List<Dealer> Dealers => _dealersService.GetAll();
-        public Dealer CurrentDealer { get; set; }
-
-        public DealersViewModel(IDealersService dealersService)
+        public DealersViewModel(IDealersService dealersService) : base(dealersService)
         {
-            _dealersService = dealersService;
         }
     }
 }

@@ -4,14 +4,10 @@ using Kups.CarBrowser.Core;
 
 namespace WPFUI.Models
 {
-    public class CarsViewModel
+    public class CarsViewModel: ViewBase<Car>
     {
-        private readonly ICarsService _carsService;
-        public List<Car> Cars => _carsService.GetAll();
-        public Car CurrentCar { get; set; }
-        public CarsViewModel(ICarsService service)
+        public CarsViewModel(ICarsService service) : base(service)
         {
-            _carsService = service;
         }
     }
 }

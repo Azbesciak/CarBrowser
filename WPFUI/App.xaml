@@ -25,6 +25,7 @@
         </Style>
 
         <local:ListToStringConverter x:Key="ListConverter" />
+        <local:IsNullToVisibleConverter x:Key="IsNullConverter"/>
     </Application.Resources>
 </Application>
 

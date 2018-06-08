@@ -13,7 +13,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="0" ItemsSource="{Binding Dealers}" SelectedItem="{Binding CurrentDealer}"
+        <ListBox Grid.Column="0" ItemsSource="{Binding All}" SelectedItem="{Binding Current}"
                  Name="DealersList">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="bo:Dealer">
@@ -23,8 +23,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1" Visibility="{Binding Path=CurrentDealer,TargetNullValue=Hidden}">
-            <Grid Width="200" DataContext="{Binding CurrentDealer}" Style="{StaticResource DGrid}">
+        <StackPanel Grid.Column="1" Visibility="{Binding Path=Current, Converter={StaticResource IsNullConverter}}">
+            <Grid Width="200" DataContext="{Binding Current}" Style="{StaticResource DGrid}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
                     <RowDefinition Height="50" />

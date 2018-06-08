@@ -13,7 +13,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="0" ItemsSource="{Binding Cars}" SelectedItem="{Binding CurrentCar}"
+        <ListBox Grid.Column="0" ItemsSource="{Binding All}" SelectedItem="{Binding Current}"
                  Name="DealersList">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="bo:Car">
@@ -23,8 +23,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1" Visibility="{Binding Path=CurrentCar,TargetNullValue=Hidden}">
-            <Grid Width="325" DataContext="{Binding CurrentCar}" Style="{StaticResource DGrid}">
+        <StackPanel Grid.Column="1" Visibility="{Binding Path=Current, Converter={StaticResource IsNullConverter}}">
+            <Grid Width="325" DataContext="{Binding Current}" Style="{StaticResource DGrid}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
                     <RowDefinition Height="50" />
@@ -35,7 +35,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="125" />
+                    <ColumnDefinition MinWidth="125" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Content="Id" />
@@ -77,9 +77,7 @@
                     <Label Grid.Column="0" Grid.Row="3" Content="Horse Power"/>
                     <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Path=HorsePower}" TextWrapping="Wrap" />
                 </Grid>
-
             </Grid>
         </StackPanel>
-
     </Grid>
 </UserControl>
