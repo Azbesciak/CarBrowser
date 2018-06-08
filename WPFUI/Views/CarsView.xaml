@@ -35,6 +35,7 @@
                     <RowDefinition Height="35" />
                     <RowDefinition Height="35" />
                     <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -53,8 +54,10 @@
                 <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Path=ProductionYear}" />
                 <Label Grid.Row="5" Grid.Column="0" Content="Color" />
                 <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Path=Color}" />
-                <Label Grid.Row="6" Grid.Column="0" Content="Engine" />
-                <Grid DataContext="{Binding Engine}" Grid.Row="6" Grid.Column="1">
+                <Label Grid.Row="6" Grid.Column="0" Content="Gear Box" />
+                <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Path=GearBox}" />
+                <Label Grid.Row="7" Grid.Column="0" Content="Engine" />
+                <Grid DataContext="{Binding Engine}" Grid.Row="7" Grid.Column="1">
                     <Grid.Resources>
                         <Style TargetType="Label">
                             <Setter Property="Padding" Value="1,1,1,1" />
@@ -95,13 +98,14 @@
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition MinWidth="125" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Content="Id" />
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Id, ValidatesOnDataErrors=True}" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Id, ValidatesOnDataErrors=True}" IsReadOnly="{Binding IsEditMode}"/>
                 <Label Grid.Row="1" Grid.Column="0" Content="Model" />
                 <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Model, ValidatesOnDataErrors=True}" />
                 <Label Grid.Row="2" Grid.Column="0" Content="Manufacturer" />
@@ -112,15 +116,16 @@
                 <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=ProductionYear, ValidatesOnDataErrors=True}" />
                 <Label Grid.Row="5" Grid.Column="0" Content="Color" />
                 <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=Color, ValidatesOnDataErrors=True}" />
-                <Label  Grid.Row="6" Grid.Column="0" Content="Engine Id"/>
-                <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Path=EngineId, ValidatesOnDataErrors=True}" TextWrapping="Wrap" />
-                <Label Grid.Row="7" Grid.Column="0" Content="Engine Name"/>
-                <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=EngineName, ValidatesOnDataErrors=True}" TextWrapping="Wrap" />
-                <Label Grid.Row="8" Grid.Column="0" Content="Engine Type"/>
-                <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Path=EngineType, ValidatesOnDataErrors=True}" TextWrapping="Wrap" />
-                <Label Grid.Row="9" Grid.Column="0" Content="Horse Power"/>
-                <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Path=HorsePower, ValidatesOnDataErrors=True}" TextWrapping="Wrap" />
-              
+                <Label Grid.Row="6" Grid.Column="0" Content="Gear box"/>
+                <ComboBox Grid.Row="6" Grid.Column="1" SelectedValue="{Binding Path=GearBox, ValidatesOnDataErrors=True}" ItemsSource="{Binding GearBoxes}"/>
+                <Label  Grid.Row="7" Grid.Column="0" Content="Engine Id"/>
+                <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=EngineId, ValidatesOnDataErrors=True}" TextWrapping="Wrap" IsReadOnly="{Binding IsEditMode}"/>
+                <Label Grid.Row="8" Grid.Column="0" Content="Engine Name"/>
+                <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Path=EngineName, ValidatesOnDataErrors=True}" TextWrapping="Wrap" />
+                <Label Grid.Row="9" Grid.Column="0" Content="Engine Type"/>
+                <ComboBox Grid.Row="9" Grid.Column="1" SelectedValue="{Binding Path=EngineType, ValidatesOnDataErrors=True}" ItemsSource="{Binding EngineTypes}"/>
+                <Label Grid.Row="10" Grid.Column="0" Content="Horse Power"/>
+                <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Path=HorsePower, ValidatesOnDataErrors=True}" TextWrapping="Wrap" />
             </Grid>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right"

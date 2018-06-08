@@ -67,6 +67,7 @@
     <Compile Include="Models\ViewBase.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Wrappers\EditableCar.cs" />
+    <Compile Include="Wrappers\EditableDealer.cs" />
     <Compile Include="Wrappers\ViewModelBase.cs" />
     <Page Include="Views\CarsView.xaml">
       <SubType>Designer</SubType>

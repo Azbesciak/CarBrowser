@@ -27,7 +27,26 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1" Style="{StaticResource EditablePanel}">
+        <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource EditablePanel}">
+            <Grid Width="200" DataContext="{Binding Editable}" Style="{StaticResource DGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition MinHeight="35" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Id" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Id, ValidatesOnDataErrors=True}" IsReadOnly="{Binding IsEditMode}"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Name" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Name, ValidatesOnDataErrors=True}" />
+                <Label Grid.Row="2" Grid.Column="0" Content="Brands" />
+                <TextBox Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Brands, ValidatesOnDataErrors=True}" />
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource CurrentPanel}">
             <Grid Width="200" DataContext="{Binding Current}" Style="{StaticResource DGrid}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="35" />
@@ -39,7 +58,7 @@
                     <ColumnDefinition Width="150" />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Content="Id" />
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Id}" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Id}"/>
                 <Label Grid.Row="1" Grid.Column="0" Content="Name" />
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Name}" />
                 <Label Grid.Row="2" Grid.Column="0" Content="Brands" />
@@ -47,25 +66,13 @@
                            Text="{Binding Path=Brands,Converter={StaticResource ListConverter}}" />
             </Grid>
         </StackPanel>
-        <StackPanel Grid.Column="1" Style="{StaticResource CurrentPanel}">
-            <Grid Width="200" DataContext="{Binding Current}" Style="{StaticResource DGrid}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="35" />
-                    <RowDefinition MinHeight="35" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50" />
-                    <ColumnDefinition Width="150" />
-                </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Content="Id" />
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Id}" />
-                <Label Grid.Row="1" Grid.Column="0" Content="Name" />
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Name}" />
-                <Label Grid.Row="2" Grid.Column="0" Content="Brands" />
-                <TextBlock Grid.Row="2" Grid.Column="1" TextWrapping="Wrap"
-                           Text="{Binding Path=Brands,Converter={StaticResource ListConverter}}" />
-            </Grid>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button Command="{Binding CreateCmd}" Content="Add Dealer" Style="{StaticResource AddButton}"/>
+            <Button Command="{Binding CommitCmd}" Content="Commit" Style="{StaticResource CommitButton}"/>
+            <Button Command="{Binding EditCmd}" Content="Edit" Style="{StaticResource EditButton}"/>
+            <Button Command="{Binding CancelCmd}" Content="Cancel" Style="{StaticResource CancelButton}"/>
+            <Button Command="{Binding RemoveCmd}" Content="Remove" Style="{StaticResource EditButton}"/>
         </StackPanel>
     </Grid>
 

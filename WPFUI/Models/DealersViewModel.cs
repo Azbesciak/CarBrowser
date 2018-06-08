@@ -8,13 +8,9 @@ namespace WPFUI.Models
     public class DealersViewModel: ViewBase<Dealer>
     {
         public DealersViewModel(IDealersService dealersService) : base(dealersService)
-        {
-        }
+        {}
 
-        protected override ViewModelBase<Dealer> CreateEditableModel(Dealer existing)
-        {
-            throw new System.NotImplementedException();
-        }
+        protected override ViewModelBase<Dealer> CreateEditableModel(Dealer existing) => new EditableDealer(existing);
 
         protected override long GetEntityId(Dealer entity) => entity.Id;
     }

@@ -52,11 +52,11 @@ namespace WPFUI.Models
         {
             Service = service;
             All = new ObservableCollection<T>(service.GetAll());
-            CreateCmd = new RelayCommand(o => CreateModel(), o => Editable == null);
-            CommitCmd = new RelayCommand(o => CommitModel(), o => Editable != null && !Editable.HasErrors);
-            EditCmd = new RelayCommand(o => CreateModel(Current), o => Current != null && Editable == null);
-            CancelCmd = new RelayCommand(o => Cancel(), o => Editable != null);
-            RemoveCmd = new RelayCommand(o => Remove(), o => Current != null && Editable == null);
+            CreateCmd = new RelayCommand(o => CreateModel(), o => true || Editable == null);
+            CommitCmd = new RelayCommand(o => CommitModel(), o => true || Editable != null && !Editable.HasErrors);
+            EditCmd = new RelayCommand(o => CreateModel(Current), o => true||Current != null && Editable == null);
+            CancelCmd = new RelayCommand(o => Cancel(), o => true||Editable != null);
+            RemoveCmd = new RelayCommand(o => Remove(), o => true||Current != null && Editable == null);
         }
 
         protected void UpdateList()
