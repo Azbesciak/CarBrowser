@@ -41,7 +41,6 @@
   <ItemGroup>
     <Compile Include="ICarsService.cs" />
     <Compile Include="IDealersService.cs" />
-    <Compile Include="IMarketService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

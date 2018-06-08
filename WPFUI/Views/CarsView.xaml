@@ -10,10 +10,13 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
-            <ColumnDefinition />
+            <ColumnDefinition Width="*" MinWidth="320"/>
         </Grid.ColumnDefinitions>
-
-        <ListBox Grid.Column="0" ItemsSource="{Binding All}" SelectedItem="{Binding Current}"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="320"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Column="0" Grid.RowSpan="2" ItemsSource="{Binding All}" SelectedItem="{Binding Current}"
                  Name="DealersList">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="bo:Car">
@@ -23,15 +26,15 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1" Visibility="{Binding Path=Current, Converter={StaticResource IsNullConverter}}">
-            <Grid Width="325" DataContext="{Binding Current}" Style="{StaticResource DGrid}">
+        <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource CurrentPanel}">
+            <Grid Width="325" DataContext="{Binding Current, Mode=TwoWay}" Style="{StaticResource DGrid}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -78,6 +81,55 @@
                     <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Path=HorsePower}" TextWrapping="Wrap" />
                 </Grid>
             </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource EditablePanel}">
+            <Grid Width="325" DataContext="{Binding Editable, Mode=TwoWay}" Style="{StaticResource DGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="125" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Id" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Id, ValidatesOnDataErrors=True}" />
+                <Label Grid.Row="1" Grid.Column="0" Content="Model" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Model, ValidatesOnDataErrors=True}" />
+                <Label Grid.Row="2" Grid.Column="0" Content="Manufacturer" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Manufacturer, ValidatesOnDataErrors=True}" />
+                <Label Grid.Row="3" Grid.Column="0" Content="CarType" />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=CarType, ValidatesOnDataErrors=True}" />
+                <Label Grid.Row="4" Grid.Column="0" Content="Production Year" />
+                <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=ProductionYear, ValidatesOnDataErrors=True}" />
+                <Label Grid.Row="5" Grid.Column="0" Content="Color" />
+                <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=Color, ValidatesOnDataErrors=True}" />
+                <Label  Grid.Row="6" Grid.Column="0" Content="Engine Id"/>
+                <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Path=EngineId, ValidatesOnDataErrors=True}" TextWrapping="Wrap" />
+                <Label Grid.Row="7" Grid.Column="0" Content="Engine Name"/>
+                <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=EngineName, ValidatesOnDataErrors=True}" TextWrapping="Wrap" />
+                <Label Grid.Row="8" Grid.Column="0" Content="Engine Type"/>
+                <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Path=EngineType, ValidatesOnDataErrors=True}" TextWrapping="Wrap" />
+                <Label Grid.Row="9" Grid.Column="0" Content="Horse Power"/>
+                <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Path=HorsePower, ValidatesOnDataErrors=True}" TextWrapping="Wrap" />
+              
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button Command="{Binding CreateCmd}" Content="Add Car" Style="{StaticResource AddButton}"/>
+            <Button Command="{Binding CommitCmd}" Content="Commit" Style="{StaticResource CommitButton}"/>
+            <Button Command="{Binding EditCmd}" Content="Edit" Style="{StaticResource EditButton}"/>
+            <Button Command="{Binding CancelCmd}" Content="Cancel" Style="{StaticResource CancelButton}"/>
+            <Button Command="{Binding RemoveCmd}" Content="Remove" Style="{StaticResource EditButton}"/>
         </StackPanel>
     </Grid>
 </UserControl>

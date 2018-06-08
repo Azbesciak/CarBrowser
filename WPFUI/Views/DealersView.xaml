@@ -10,10 +10,14 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
-            <ColumnDefinition />
+            <ColumnDefinition Width="*" MinWidth="320"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="320"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
 
-        <ListBox Grid.Column="0" ItemsSource="{Binding All}" SelectedItem="{Binding Current}"
+        <ListBox Grid.Column="0" Grid.RowSpan="2" ItemsSource="{Binding All}" SelectedItem="{Binding Current}"
                  Name="DealersList">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="bo:Dealer">
@@ -23,12 +27,12 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1" Visibility="{Binding Path=Current, Converter={StaticResource IsNullConverter}}">
+        <StackPanel Grid.Column="1" Style="{StaticResource EditablePanel}">
             <Grid Width="200" DataContext="{Binding Current}" Style="{StaticResource DGrid}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition MinHeight="50" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition MinHeight="35" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50" />
@@ -43,7 +47,26 @@
                            Text="{Binding Path=Brands,Converter={StaticResource ListConverter}}" />
             </Grid>
         </StackPanel>
-
+        <StackPanel Grid.Column="1" Style="{StaticResource CurrentPanel}">
+            <Grid Width="200" DataContext="{Binding Current}" Style="{StaticResource DGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition MinHeight="35" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Id" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Id}" />
+                <Label Grid.Row="1" Grid.Column="0" Content="Name" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Name}" />
+                <Label Grid.Row="2" Grid.Column="0" Content="Brands" />
+                <TextBlock Grid.Row="2" Grid.Column="1" TextWrapping="Wrap"
+                           Text="{Binding Path=Brands,Converter={StaticResource ListConverter}}" />
+            </Grid>
+        </StackPanel>
     </Grid>
 
 </UserControl>

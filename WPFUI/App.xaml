@@ -4,28 +4,134 @@
              xmlns:local="clr-namespace:WPFUI"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <local:ListToStringConverter x:Key="ListConverter" />
+        <local:IsNullToVisibleConverter x:Key="IsNullConverter"/>
         <Style TargetType="ListBox">
-            <Setter Property="Background" Value="WhiteSmoke"></Setter>
-            <Setter Property="Opacity" Value="0.75"></Setter>
+            <Setter Property="Background" Value="WhiteSmoke"/>
+            <Setter Property="Opacity" Value="0.75"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=Editable, Converter={StaticResource IsNullConverter}}" Value="False">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
         <Style TargetType="Grid" x:Key="DGrid">
-            <Setter Property="Background" Value="WhiteSmoke"></Setter>
-            <Setter Property="Margin" Value="40"></Setter>
-            <Setter Property="Opacity" Value="0.8"></Setter>
+            <Setter Property="Background" Value="WhiteSmoke"/>
+            <Setter Property="Opacity" Value="0.8"/>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="Padding" Value="5,5,5,5" />
-            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-            <Setter Property="Foreground" Value="DimGray"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="DimGray"/>
         </Style>
         <Style TargetType="Label">
             <Setter Property="Padding" Value="5,5,5,5" />
             <Setter Property="FontWeight" Value="ExtraBold" />
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="True">
+                            <ListBox DockPanel.Dock="Bottom" Name="lstErrors" ItemsSource="{Binding ElementName=ErrTextBox, Path=AdornedElement.(Validation.Errors)}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ErrorContent}" Foreground="DarkOrange"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Grid DockPanel.Dock="Left">
+                                <Ellipse Width="20" Height="20" Stroke="Crimson" Fill="DarkRed"/>
+                                <Label Content="{Binding ElementName=ErrTextBox, Path=AdornedElement.(Validation.Errors).Count}" Foreground="White"/>
+                            </Grid>
+                            <Border BorderBrush="Crimson">
+                                <AdornedElementPlaceholder Name="ErrTextBox"/>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="BtnStyle">
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+        <Style TargetType="{x:Type StackPanel}" x:Key="CurrentPanel">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=Current, Converter={StaticResource IsNullConverter}}" Value="False" />
+                        <Condition Binding="{Binding Path=Editable, Converter={StaticResource IsNullConverter}}" Value="True" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Visibility" Value="Visible" />
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type StackPanel}" x:Key="EditablePanel">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=Editable, Converter={StaticResource IsNullConverter}}" Value="False">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="AddButton" BasedOn="{StaticResource BtnStyle}">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=Editable, Converter={StaticResource IsNullConverter}}" Value="True" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Visibility" Value="Visible" />
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="EditButton" BasedOn="{StaticResource BtnStyle}">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=Current, Converter={StaticResource IsNullConverter}}" Value="False" />
+                        <Condition Binding="{Binding Path=Editable, Converter={StaticResource IsNullConverter}}" Value="True" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Visibility" Value="Visible" />
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="CommitButton" BasedOn="{StaticResource BtnStyle}">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=Editable, Converter={StaticResource IsNullConverter}}" Value="False" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Visibility" Value="Visible" />
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="CancelButton" BasedOn="{StaticResource BtnStyle}">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=Editable, Converter={StaticResource IsNullConverter}}" Value="False" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Visibility" Value="Visible" />
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
 
-        <local:ListToStringConverter x:Key="ListConverter" />
-        <local:IsNullToVisibleConverter x:Key="IsNullConverter"/>
     </Application.Resources>
 </Application>
+
+
+
+
+
+
 
