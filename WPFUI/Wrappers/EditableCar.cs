@@ -23,8 +23,13 @@ namespace WPFUI.Wrappers
         private EngineType _engineType;
         private int _horsePower;
 
-        public List<EngineType> EngineTypes => Enum.GetValues(typeof(EngineType)).Cast<EngineType>().ToList();
-        public List<GearBox> GearBoxes => Enum.GetValues(typeof(GearBox)).Cast<GearBox>().ToList();
+        public List<CarType> CarTypes => GetListOfType<CarType>();
+        public List<EngineType> EngineTypes => GetListOfType<EngineType>();
+        public List<GearBox> GearBoxes => GetListOfType<GearBox>();
+
+        public static List<T> GetListOfType<T>() => Enum.GetValues(typeof(T)).Cast<T>().ToList();
+
+
         public EditableCar(Car car) : base(car != null)
         {
             if (car == null) return;

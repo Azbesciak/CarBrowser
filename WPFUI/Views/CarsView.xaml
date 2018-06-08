@@ -48,7 +48,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Model}" />
                 <Label Grid.Row="2" Grid.Column="0" Content="Manufacturer" />
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=Manufacturer}" />
-                <Label Grid.Row="3" Grid.Column="0" Content="CarType" />
+                <Label Grid.Row="3" Grid.Column="0" Content="Car Type" />
                 <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Path=CarType}" />
                 <Label Grid.Row="4" Grid.Column="0" Content="Production Year" />
                 <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Path=ProductionYear}" />
@@ -102,7 +102,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition MinWidth="125" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" MaxWidth="125"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Content="Id" />
                 <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Id, ValidatesOnDataErrors=True}" IsReadOnly="{Binding IsEditMode}"/>
@@ -110,20 +110,24 @@
                 <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Model, ValidatesOnDataErrors=True}" />
                 <Label Grid.Row="2" Grid.Column="0" Content="Manufacturer" />
                 <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Manufacturer, ValidatesOnDataErrors=True}" />
-                <Label Grid.Row="3" Grid.Column="0" Content="CarType" />
-                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=CarType, ValidatesOnDataErrors=True}" />
+                <Label Grid.Row="3" Grid.Column="0" Content="Car Type" />
+                <ComboBox Grid.Row="3" Grid.Column="1" SelectedValue="{Binding Path=CarType, ValidatesOnDataErrors=True}"
+                          ItemsSource="{Binding CarTypes}"/>
                 <Label Grid.Row="4" Grid.Column="0" Content="Production Year" />
                 <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=ProductionYear, ValidatesOnDataErrors=True}" />
                 <Label Grid.Row="5" Grid.Column="0" Content="Color" />
                 <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=Color, ValidatesOnDataErrors=True}" />
                 <Label Grid.Row="6" Grid.Column="0" Content="Gear box"/>
-                <ComboBox Grid.Row="6" Grid.Column="1" SelectedValue="{Binding Path=GearBox, ValidatesOnDataErrors=True}" ItemsSource="{Binding GearBoxes}"/>
+                <ComboBox Grid.Row="6" Grid.Column="1" SelectedValue="{Binding Path=GearBox, ValidatesOnDataErrors=True}"
+                          ItemsSource="{Binding GearBoxes}"/>
                 <Label  Grid.Row="7" Grid.Column="0" Content="Engine Id"/>
-                <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=EngineId, ValidatesOnDataErrors=True}" TextWrapping="Wrap" IsReadOnly="{Binding IsEditMode}"/>
+                <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=EngineId, ValidatesOnDataErrors=True}"
+                         TextWrapping="Wrap" IsReadOnly="{Binding IsEditMode}"/>
                 <Label Grid.Row="8" Grid.Column="0" Content="Engine Name"/>
                 <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Path=EngineName, ValidatesOnDataErrors=True}" TextWrapping="Wrap" />
                 <Label Grid.Row="9" Grid.Column="0" Content="Engine Type"/>
-                <ComboBox Grid.Row="9" Grid.Column="1" SelectedValue="{Binding Path=EngineType, ValidatesOnDataErrors=True}" ItemsSource="{Binding EngineTypes}"/>
+                <ComboBox Grid.Row="9" Grid.Column="1" SelectedValue="{Binding Path=EngineType, ValidatesOnDataErrors=True}"
+                          ItemsSource="{Binding EngineTypes}"/>
                 <Label Grid.Row="10" Grid.Column="0" Content="Horse Power"/>
                 <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Path=HorsePower, ValidatesOnDataErrors=True}" TextWrapping="Wrap" />
             </Grid>
