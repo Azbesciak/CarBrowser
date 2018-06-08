@@ -75,7 +75,6 @@
             <Button Command="{Binding RemoveCmd}" Content="Remove" Style="{StaticResource EditButton}"/>
         </StackPanel>
     </Grid>
-
 </UserControl>
 
 
