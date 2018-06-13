@@ -12,6 +12,7 @@
 
         <local:ListToStringConverter x:Key="ListConverter" />
         <local:IsNullToVisibleConverter x:Key="IsNullConverter" />
+        <local:StringToIntConverter x:Key="StringToIntConverter" />
         <Style TargetType="ListBox">
             <Setter Property="Background" Value="WhiteSmoke" />
             <Setter Property="Opacity" Value="0.75" />
@@ -62,6 +63,12 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsReadOnly" Value="True">
+                    <Setter Property="Background" Value="DarkGray"/>
+                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style TargetType="{x:Type Button}" x:Key="BtnStyle">
             <Setter Property="Margin" Value="5" />
