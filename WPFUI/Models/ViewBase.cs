@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using Kups.CarBrowser.BO;
 using Kups.CarBrowser.Core;
 using WPFUI.Annotations;
 using WPFUI.Wrappers;
@@ -18,7 +14,7 @@ namespace WPFUI.Models
         private ViewModelBase<T> _editable;
         private T _current;
 
-        public ObservableCollection<T> All { get; set; }
+        public ObservableCollection<T> All { get; }
 
         public T Current
         {
@@ -78,11 +74,7 @@ namespace WPFUI.Models
             UpdateList();
         }
 
-        public event EventHandler CanExecuteChanged
-        {
-            add => RequerySuggested += value;
-            remove => RequerySuggested -= value;
-        }
+        
 
         private void CreateModel(T existing = default(T))
         {
@@ -117,11 +109,6 @@ namespace WPFUI.Models
         public void RaiseCanExecuteChanged()
         {
             InvalidateRequerySuggested();
-            CreateCmd.UpdateCanExecuteState();
-            CommitCmd.UpdateCanExecuteState();
-            EditCmd.UpdateCanExecuteState();
-            CancelCmd.UpdateCanExecuteState();
-            RemoveCmd.UpdateCanExecuteState();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using static System.Windows.Input.CommandManager;
 
 namespace WPFUI.Models
 {
@@ -16,13 +17,12 @@ namespace WPFUI.Models
 
         public bool CanExecute(object parameter) => _canExecute?.Invoke(parameter) ?? true;
 
-        public void UpdateCanExecuteState()
-        {
-            CanExecuteChanged?.Invoke(this, new EventArgs());
-        }
-
         public void Execute(object parameter) => _execute(parameter);
-
-        public event EventHandler CanExecuteChanged;
+        
+        public event EventHandler CanExecuteChanged
+        {
+            add => RequerySuggested += value;
+            remove => RequerySuggested -= value;
+        }
     }
 }

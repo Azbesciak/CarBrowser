@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Kups.CarBrowser.BO;
-using WPFUI.Models;
 
 namespace WPFUI.Wrappers
 {
@@ -15,7 +10,7 @@ namespace WPFUI.Wrappers
         private string _name;
         private string _brands;
 
-        public EditableDealer(Dealer dealer, RelayCommand commitCmd) : base(dealer != null, commitCmd)
+        public EditableDealer(Dealer dealer) : base(dealer != null)
         {
             if (dealer == null) return;
             Id = dealer.Id;

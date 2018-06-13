@@ -31,7 +31,7 @@ namespace WPFUI.Wrappers
         public static List<T> GetListOfType<T>() => Enum.GetValues(typeof(T)).Cast<T>().ToList();
 
 
-        public EditableCar(Car car, RelayCommand commitCmd) : base(car != null, commitCmd)
+        public EditableCar(Car car) : base(car != null)
         {
             if (car == null) return;
             _carType = car.CarType;
@@ -130,6 +130,7 @@ namespace WPFUI.Wrappers
             }
         }
 
+        [Required(ErrorMessage = "Engine Id power is required")]
         [Range(1, int.MaxValue, ErrorMessage = "Engine Id must be positive")]
         public long EngineId
         {
@@ -165,15 +166,18 @@ namespace WPFUI.Wrappers
             }
         }
 
+        [Required(ErrorMessage = "Horse power is required")]
         [Range(1, int.MaxValue, ErrorMessage = "Horse power must be positive")]
         public int HorsePower
         {
             get => _horsePower;
             set
             {
+                
                 _horsePower = value;
-                OnPropertyChanged(nameof(HorsePower));
                 Validate();
+                OnPropertyChanged(nameof(HorsePower));
+                
             }
         }
 
