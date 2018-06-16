@@ -6,7 +6,7 @@ namespace Kups.CarBrowser.JsonDAO
 {
     public class JsonCarsRepository : JsonRepository<Car>, ICarsRepository
     {
-        public JsonCarsRepository(JsonReader<Car> reader) : base(reader, c => c.Id)
+        public JsonCarsRepository(JsonReader<Car> reader) : base(reader)
         {}
     }
 }

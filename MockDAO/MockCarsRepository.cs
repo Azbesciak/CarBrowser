@@ -9,7 +9,7 @@ namespace Kups.CarBrowser.MockDAO
     {
         private readonly List<Car> _cars;
 
-        public MockCarsRepository() : base(c => c.Id)
+        public MockCarsRepository()
         {
             _cars = new List<Car>(new[]
             {

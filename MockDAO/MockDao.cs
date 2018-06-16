@@ -2,11 +2,11 @@
 
 namespace Kups.CarBrowser.MockDAO
 {
-    public class MockDao: IDao
+    public class MockDao : IDao
     {
         private readonly ICarsRepository _carsRepository;
         private readonly IDealersRepository _dealersRepository;
-        
+
         public MockDao()
         {
             _carsRepository = new MockCarsRepository();

@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Kups.CarBrowser.BO;
 using Kups.CarBrowser.DAO;
 
 namespace Kups.CarBrowser.MockDAO
 {
-    public abstract class MockRepo<T>:IRepository<T>
+    public abstract class MockRepo<T> : IRepository<T> where T : Entity
     {
-        private readonly Func<T, long> _idGetter;
-
-        protected MockRepo(Func<T, long> idGetter)
+        protected MockRepo()
         {
-            _idGetter = idGetter;
         }
 
         public abstract List<T> GetAll();
-        
 
-        public T GetById(long id) => GetAll().Find(o => _idGetter(o) == id);
+        public T GetById(long id) => GetAll().Find(o => o.Id == id);
+
         public bool Add(T obj)
         {
             GetAll().Add(obj);
@@ -29,15 +23,15 @@ namespace Kups.CarBrowser.MockDAO
 
         public T Update(T obj)
         {
-            var id = _idGetter(obj);
-            int find = GetAll().FindIndex(o => id == _idGetter(o));
+            int find = GetAll().FindIndex(o => obj.Id == o.Id);
             if (find >= 0)
             {
                 GetAll()[find] = obj;
             }
+
             return obj;
         }
 
-        public bool Remove(long id) => GetAll().RemoveAll(o => _idGetter(o) == id) > 0;
+        public bool Remove(long id) => GetAll().RemoveAll(o => o.Id == id) > 0;
     }
 }
