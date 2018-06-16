@@ -1,4 +1,4 @@
-﻿namespace WPFUI.Views
+﻿namespace Kups.CarBrowser.WPFUI.Views
 {
     /// <summary>
     /// Logika interakcji dla klasy DealersView.xaml

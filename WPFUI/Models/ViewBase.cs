@@ -1,12 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Kups.CarBrowser.Core;
+using Kups.CarBrowser.WPFUI.Wrappers;
 using WPFUI.Annotations;
-using WPFUI.Wrappers;
-using static System.Windows.Input.CommandManager;
 
-namespace WPFUI.Models
+namespace Kups.CarBrowser.WPFUI.Models
 {
     public abstract class ViewBase<T>: INotifyPropertyChanged
     {
@@ -108,7 +108,7 @@ namespace WPFUI.Models
 
         public void RaiseCanExecuteChanged()
         {
-            InvalidateRequerySuggested();
+            CommandManager.InvalidateRequerySuggested();
         }
     }
 }

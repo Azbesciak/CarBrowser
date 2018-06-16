@@ -2,7 +2,7 @@
 using System.Linq;
 using Kups.CarBrowser.BO;
 
-namespace WPFUI.Wrappers
+namespace Kups.CarBrowser.WPFUI.Wrappers
 {
     public class EditableDealer : ViewModelBase<Dealer>
     {

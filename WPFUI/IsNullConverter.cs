@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Data;
 
-namespace WPFUI
+namespace Kups.CarBrowser.WPFUI
 {
 
     [ValueConversion(typeof(object), typeof(bool))]

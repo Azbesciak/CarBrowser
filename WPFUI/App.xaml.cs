@@ -1,4 +1,4 @@
-﻿namespace WPFUI
+﻿namespace Kups.CarBrowser.WPFUI
 {
     /// <summary>
     /// Logika interakcji dla klasy App.xaml

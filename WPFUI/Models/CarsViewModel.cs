@@ -1,8 +1,8 @@
 ﻿using Kups.CarBrowser.BO;
 using Kups.CarBrowser.Core;
-using WPFUI.Wrappers;
+using Kups.CarBrowser.WPFUI.Wrappers;
 
-namespace WPFUI.Models
+namespace Kups.CarBrowser.WPFUI.Models
 {
     public class CarsViewModel: ViewBase<Car>
     {

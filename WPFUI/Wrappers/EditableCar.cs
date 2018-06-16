@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Kups.CarBrowser.BO;
-using WPFUI.Models;
 
-namespace WPFUI.Wrappers
+namespace Kups.CarBrowser.WPFUI.Wrappers
 {
     public class EditableCar : ViewModelBase<Car>
     {

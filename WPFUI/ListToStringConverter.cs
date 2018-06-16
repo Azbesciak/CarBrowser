@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Data;
 
-namespace WPFUI
+namespace Kups.CarBrowser.WPFUI
 {
     [ValueConversion(typeof(List<string>), typeof(string))]
     public class ListToStringConverter : IValueConverter

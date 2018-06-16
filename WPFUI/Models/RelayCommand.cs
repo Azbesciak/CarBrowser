@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
-using static System.Windows.Input.CommandManager;
 
-namespace WPFUI.Models
+namespace Kups.CarBrowser.WPFUI.Models
 {
     public class RelayCommand : ICommand
     {
@@ -21,8 +20,8 @@ namespace WPFUI.Models
         
         public event EventHandler CanExecuteChanged
         {
-            add => RequerySuggested += value;
-            remove => RequerySuggested -= value;
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
     }
 }

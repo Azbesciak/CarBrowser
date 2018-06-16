@@ -45,6 +45,7 @@
     <Compile Include="Dealer.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="EngineType.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="GearBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

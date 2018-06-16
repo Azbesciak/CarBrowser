@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace WPFUI
+namespace Kups.CarBrowser.WPFUI
 {
     [ValueConversion(typeof(int), typeof(string))]
     public class StringToIntConverter : IValueConverter

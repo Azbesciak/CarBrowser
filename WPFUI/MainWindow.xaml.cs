@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using Kups.CarBrowser.BL;
-using WPFUI.Models;
+using Kups.CarBrowser.WPFUI.Models;
 
-namespace WPFUI
+namespace Kups.CarBrowser.WPFUI
 {
     /// <summary>
     /// Logika interakcji dla klasy MainWindow.xaml
     /// </summary>
     public partial class MainWindow
     {
-        private static readonly CarBrowser CarBrowser = new CarBrowser();
+        private static readonly BL.CarBrowser CarBrowser = new BL.CarBrowser();
         private readonly List<Lazy<object>> _pages = new List<Lazy<object>>(new[]
         {
             new Lazy<object>(() => new CarsViewModel(CarBrowser.CarsService)),

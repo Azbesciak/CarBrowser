@@ -1,10 +1,10 @@
-﻿<Window x:Class="WPFUI.MainWindow"
+﻿<Window x:Class="Kups.CarBrowser.WPFUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewmodels="clr-namespace:WPFUI.Models"
-        xmlns:views="clr-namespace:WPFUI.Views"
+        xmlns:views1="clr-namespace:Kups.CarBrowser.WPFUI.Views"
+        xmlns:models="clr-namespace:Kups.CarBrowser.WPFUI.Models"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
     <Window.Resources>
@@ -15,11 +15,11 @@
             <Setter Property="Foreground" Value="#FF2196F3"></Setter>
             <Setter Property="Width" Value="150"></Setter>
         </Style>
-        <DataTemplate DataType="{x:Type viewmodels:CarsViewModel}">
-            <views:CarsView DataContext="{Binding}"/>
+        <DataTemplate DataType="{x:Type models:CarsViewModel}">
+            <views1:CarsView DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:DealersViewModel}">
-            <views:DealersView DataContext="{Binding}"/>
+        <DataTemplate DataType="{x:Type models:DealersViewModel}">
+            <views1:DealersView DataContext="{Binding}"/>
         </DataTemplate>
        
     </Window.Resources>
