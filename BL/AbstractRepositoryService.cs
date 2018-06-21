@@ -1,26 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Kups.CarBrowser.Core;
 using Kups.CarBrowser.DAO;
 
 namespace Kups.CarBrowser.BL
 {
-    public abstract class AbstractRepositoryService<T>: IService<T>
+    public abstract class AbstractRepositoryService<T> : IService<T>
     {
-        protected readonly IRepository<T> Repository;
+        private readonly IRepository<T> _repository;
 
         internal AbstractRepositoryService(IRepository<T> repository)
         {
-            Repository = repository;
+            _repository = repository;
         }
 
-        public List<T> GetAll() => Repository.GetAll();
-        public T GetById(long id) => Repository.GetById(id);
-        public bool Add(T obj) => Repository.Add(obj);
-        public T Update(T obj) => Repository.Update(obj);
-        public bool Remove(long id) => Repository.Remove(id);
+        public List<T> GetAll() => _repository.GetAll();
+        public T GetById(long id) => _repository.GetById(id);
+        public bool Add(T obj) => _repository.Add(obj);
+        public T Update(T obj) => _repository.Update(obj);
+        public bool Remove(long id) => _repository.Remove(id);
     }
 }
